@@ -1,18 +1,14 @@
-import { sql } from "drizzle-orm";
-import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, serial } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const users = pgTable("users", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
+// Dummy table to satisfy the build environment requirements.
+// The application will strictly use LocalStorage for data persistence as requested.
+export const dummy = pgTable("dummy", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
 });
 
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
-});
-
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
+export const insertDummySchema = createInsertSchema(dummy).omit({ id: true });
+export type Dummy = typeof dummy.$inferSelect;
+export type InsertDummy = z.infer<typeof insertDummySchema>;
