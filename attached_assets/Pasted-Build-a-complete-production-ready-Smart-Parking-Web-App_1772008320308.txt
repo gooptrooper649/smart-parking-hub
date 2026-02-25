@@ -1,0 +1,203 @@
+Build a complete production-ready Smart Parking Web Application using pure HTML, CSS, and Vanilla JavaScript (no backend). The project must be fully deployable on Netlify as a static site.
+
+🎯 Project Name:
+
+Smart Multi-Floor Parking & Rerouting System
+
+🗺️ Core Features
+1️⃣ Map Integration
+
+Use Leaflet.js with OpenStreetMap
+
+Automatically fetch user's current location
+
+Center the map at current location
+
+Add zoom controls
+
+2️⃣ Right-Click Parking Creation
+
+When user right-clicks on map:
+
+Show custom context menu: "Add Parking Here"
+
+On click → show popup form:
+
+Parking Name (text input)
+
+Number of Levels (number input)
+
+Rows per Level (number input)
+
+Columns per Level (number input)
+
+After form submission:
+
+Create a parking object at that latitude/longitude
+
+Store it in a global JavaScript array
+
+3️⃣ Slot Generation Logic
+
+For each parking:
+
+Ground floor → "G"
+
+Upper floors → 1, 2, 3...
+
+Slot ID format:
+Floor + RowLetter + ColumnNumber
+
+Example:
+GA1, GA2
+GB1
+1A1
+1B2
+
+Generate slots dynamically.
+
+Each slot should include:
+{
+id: "GA1",
+occupied: true/false
+}
+
+Simulate occupancy:
+occupied = Math.random() < 0.75
+
+4️⃣ Dashboard Panel
+
+Create a side dashboard with:
+
+Parking Name
+
+Total Slots
+
+Occupied Slots
+
+Available Slots
+
+Occupancy Percentage
+
+Status Indicator:
+
+Color Code:
+Green → below 60%
+Yellow → 60–80%
+Red → above 80%
+
+Display slots visually in grid layout.
+Occupied → Red
+Available → Green
+
+5️⃣ Smart Rerouting Logic
+
+If occupancy percentage > 80%:
+
+Filter other parkings with occupancy < 80%
+
+Calculate nearest using Haversine formula
+
+Select nearest available parking
+
+Draw route using Leaflet polyline
+
+Show alert message:
+"Parking Full. Rerouting to nearest available parking."
+
+Implement Haversine formula in pure JavaScript.
+
+6️⃣ Parking Storage
+
+Store all parkings in:
+let parkingLocations = [];
+
+Each object structure:
+{
+id,
+name,
+lat,
+lng,
+levels,
+rows,
+cols,
+slots,
+occupancy
+}
+
+7️⃣ UI Requirements
+
+Modern clean dashboard:
+
+Flex layout
+
+Card style panels
+
+Soft shadows
+
+Responsive design
+
+Mobile friendly
+
+Map takes 70% width.
+Dashboard takes 30%.
+
+8️⃣ Files Required
+
+Project structure:
+
+index.html
+style.css
+script.js
+
+Include Leaflet CDN.
+
+Do NOT use:
+
+React
+
+Backend
+
+Database
+
+Frameworks
+
+Everything must run fully in browser.
+
+9️⃣ Extra Enhancements
+
+Add:
+
+Marker popup showing occupancy %
+
+Button to simulate refresh occupancy
+
+Clear route button
+
+Animated slot color transition
+
+LocalStorage saving parkings
+
+🔟 Code Quality
+
+Use modular functions
+
+Clean variable naming
+
+Comments explaining logic
+
+No errors
+
+Production-ready formatting
+
+Final Output
+
+Return:
+
+Complete index.html
+
+Complete style.css
+
+Complete script.js
+
+Fully working and ready for Netlify deployment.
