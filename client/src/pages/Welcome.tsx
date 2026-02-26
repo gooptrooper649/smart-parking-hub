@@ -14,22 +14,25 @@ const features = [
     title: "Road Analyser",
     description: "AI-powered analysis of road conditions and traffic flow.",
     icon: Car,
-    href: "/road-analyser",
+    href: "https://github.com/gooptrooper649/traffic-mitigation-smart-parking-system",
     color: "text-blue-500",
+    external: true,
   },
   {
     title: "Smart Traffic Light",
     description: "Intelligent traffic management system for optimized flow.",
     icon: Lightbulb,
-    href: "/smart-traffic",
+    href: "https://github.com/gooptrooper649/traffic-mitigation-smart-parking-system",
     color: "text-green-500",
+    external: true,
   },
   {
     title: "Pothole Detection",
     description: "Automated identification and reporting of road damage.",
     icon: AlertTriangle,
-    href: "/potholes",
+    href: "https://github.com/gooptrooper649/traffic-mitigation-smart-parking-system",
     color: "text-yellow-500",
+    external: true,
   },
   {
     title: "Parking System",
@@ -109,7 +112,13 @@ export default function WelcomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature) => (
-              <Link key={feature.title} href={feature.href}>
+              <a 
+                key={feature.title} 
+                href={feature.href}
+                target={feature.external ? "_blank" : "_self"}
+                rel={feature.external ? "noopener noreferrer" : ""}
+                className="block h-full"
+              >
                 <Card className="hover-elevate cursor-pointer h-full transition-all border-border/50">
                   <CardHeader className="flex flex-row items-center gap-4">
                     <div className={`p-2 rounded-lg bg-card border ${feature.color}`}>
@@ -125,7 +134,7 @@ export default function WelcomePage() {
                     </CardDescription>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
         </section>
